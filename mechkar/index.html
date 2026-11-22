@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="claro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MechKar Systems | Tecnologia para a mecânica automotiva</title>
+  <meta name="description" content="A MechKar cria soluções tecnológicas para a mecânica automotiva, com atenção especial aos carros Volkswagen: identificação, consulta e controle de dados mecânicos e gestão de oficinas.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f4f6fa">
+  <meta property="og:title" content="MechKar Systems">
+  <meta property="og:description" content="Inovação e tecnologia para a mecânica automotiva.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+
+  <!-- Aplica o tema e as preferências de acessibilidade antes de desenhar a página (evita piscar) -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        var tema = localStorage.getItem('mechkar-tema') || 'auto';
+        var escuro = tema === 'escuro' || (tema === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        d.setAttribute('data-theme', escuro ? 'escuro' : 'claro');
+        var a = JSON.parse(localStorage.getItem('mechkar-acess') || '{}');
+        if (a.fonte) d.style.setProperty('--escala-fonte', a.fonte / 100);
+        if (a.contraste) d.setAttribute('data-contraste', 'alto');
+        if (a.links) d.setAttribute('data-links', 'destacados');
+        if (a.movimento) d.setAttribute('data-movimento', 'reduzido');
+        if (a.dislexia) d.setAttribute('data-fonte', 'legivel');
+        if (a.espaco) d.setAttribute('data-espaco', 'amplo');
+        if (a.cursor) d.setAttribute('data-cursor', 'grande');
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="topo" id="topo">
+    <div class="container topo-linha">
+      <a class="marca" href="#inicio" aria-label="MechKar Systems, ir para o início">
+        <img class="marca-simbolo" src="assets/img/simbolo.png" alt="" width="40" height="44">
+        <span class="marca-nome">Mechkar</span>
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#solucoes">Soluções</a></li>
+          <li><a href="#missao">Missão e valores</a></li>
+          <li><a href="#equipe">Equipe</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="acoes">
+        <button class="icone-btn" id="alternar-tema" type="button" aria-pressed="false" aria-label="Ativar modo escuro" title="Alternar modo claro e escuro">
+          <svg class="ic-lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <svg class="ic-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.9 1.9M16.8 16.8l1.9 1.9M18.7 5.3l-1.9 1.9M7.2 16.8l-1.9 1.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <button class="icone-btn" id="abrir-acess" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="painel-acess" aria-label="Abrir opções de acessibilidade" title="Acessibilidade">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.6" r="2.1" fill="currentColor"/><path d="M4.5 8.4c2.4.8 4.8 1.2 7.5 1.2s5.1-.4 7.5-1.2M12 9.6v4.2m0 0l-3.2 6.4m3.2-6.4l3.2 6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="icone-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path class="mb-a" d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+
+    <!-- ============ INÍCIO ============ -->
+    <section class="hero" id="inicio" aria-labelledby="titulo-hero">
+      <div class="hero-grade" aria-hidden="true"></div>
+      <div class="container hero-linha">
+        <div class="hero-texto revelar">
+          <p class="etiqueta">Mecânica automotiva + tecnologia</p>
+          <h1 id="titulo-hero">Inovação e tecnologia para a <span class="destaque">mecânica automotiva</span></h1>
+          <p class="lead">Combinamos tecnologia, novidades e expertise em carros para simplificar e otimizar a identificação, a consulta e o controle de dados mecânicos, com atenção especial aos carros da Volkswagen.</p>
+          <div class="botoes">
+            <a class="btn btn-primario" href="#sobre">Conheça a MechKar</a>
+            <a class="btn btn-secundario" href="#contato">Fale com a equipe</a>
+          </div>
+          <ul class="chips" aria-label="Pontos de atenção da MechKar">
+            <li>Carros Volkswagen</li>
+            <li>Dados técnicos</li>
+            <li>Gestão de oficinas</li>
+          </ul>
+        </div>
+
+        <div class="hero-arte revelar" aria-hidden="true">
+          <svg class="engrenagem eng-a" viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="16" stroke-dasharray="9.8 9.8"/><circle cx="100" cy="100" r="66" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="100" r="18" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+          <svg class="engrenagem eng-b" viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="16" stroke-dasharray="9.8 9.8"/><circle cx="100" cy="100" r="66" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="100" r="18" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+          <div class="hero-medalhao"><img src="assets/img/simbolo.png" alt="" width="240" height="265"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE ============ -->
+    <section class="secao" id="sobre" aria-labelledby="titulo-sobre">
+      <div class="container duas-colunas">
+        <div class="revelar">
+          <p class="etiqueta">Quem somos</p>
+          <h2 id="titulo-sobre">Sobre a MechKar</h2>
+          <p>Na MechKar, focamos em criar avanços tecnológicos para a área automotiva, com atenção especial à mecânica e aos carros da Volkswagen.</p>
+          <p>Nosso propósito é combinar tecnologia, novidades e expertise em carros para simplificar e otimizar a identificação, consulta e controle de dados mecânicos, tornando-os mais fáceis de acessar.</p>
+          <p>Criamos sistemas e instrumentos que ajudam profissionais, aficionados e qualquer pessoa que procure detalhes sobre componentes, usos, compatibilidade e dados técnicos de carros Volkswagen.</p>
+        </div>
+        <div class="revelar">
+          <blockquote class="citacao">
+            <p>Temos convicção de que a tecnologia pode mudar a forma como as pessoas se relacionam com a mecânica de veículos. Por isso, estamos sempre buscando oferecer alternativas úteis, seguras e fáceis de usar, priorizando a exatidão dos dados e a vivência dos nossos clientes.</p>
+            <footer>MechKar — Inovação e tecnologia para a mecânica automotiva.</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOLUÇÕES ============ -->
+    <section class="secao secao-alt" id="solucoes" aria-labelledby="titulo-solucoes">
+      <div class="container">
+        <header class="cabeca-secao revelar">
+          <p class="etiqueta">O que fazemos</p>
+          <h2 id="titulo-solucoes">Sistemas e instrumentos para quem vive de mecânica</h2>
+          <p>Soluções pensadas para profissionais, aficionados e qualquer pessoa que precise de informação confiável sobre carros Volkswagen.</p>
+        </header>
+
+        <ul class="cartoes">
+          <li class="cartao revelar">
+            <span class="cartao-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+            <h3>Identificação</h3>
+            <p>Simplificamos e otimizamos a identificação de componentes de carros Volkswagen.</p>
+          </li>
+          <li class="cartao revelar">
+            <span class="cartao-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 8.5h8M8 12.5h8M8 16.5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <h3>Consulta</h3>
+            <p>Acesso mais fácil a detalhes sobre usos, compatibilidade e dados técnicos.</p>
+          </li>
+          <li class="cartao revelar">
+            <span class="cartao-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7.5" ry="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 6v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6M4.5 12v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+            <h3>Controle de dados mecânicos</h3>
+            <p>Controle de dados mecânicos com foco na exatidão das informações e na redução de erros operacionais.</p>
+          </li>
+          <li class="cartao revelar">
+            <span class="cartao-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L11 20a2.2 2.2 0 0 1-3.1-3.1l8.7-8.7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14.7 6.3a4 4 0 0 1 5.5-.7l-2.6 2.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+            <h3>Gestão de oficinas</h3>
+            <p>Soluções que modernizam a gestão de oficinas mecânicas e melhoram a produtividade e o atendimento ao cliente.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ MISSÃO, VISÃO, VALORES ============ -->
+    <section class="secao" id="missao" aria-labelledby="titulo-mvv">
+      <div class="container">
+        <header class="cabeca-secao revelar">
+          <p class="etiqueta">Nosso norte</p>
+          <h2 id="titulo-mvv">Missão, visão e valores</h2>
+        </header>
+
+        <div class="mvv">
+          <article class="mvv-bloco revelar" aria-labelledby="t-missao">
+            <h3 id="t-missao"><span class="mvv-num" aria-hidden="true">01</span> Missão</h3>
+            <p>A missão da MechKar Systems é desenvolver soluções tecnológicas inovadoras e acessíveis para modernizar a gestão de oficinas mecânicas, contribuindo para o aumento da produtividade, a redução de erros operacionais e a melhoria do atendimento ao cliente.</p>
+          </article>
+          <article class="mvv-bloco revelar" id="visao" aria-labelledby="t-visao">
+            <h3 id="t-visao"><span class="mvv-num" aria-hidden="true">02</span> Visão</h3>
+            <p>Ser reconhecida como referência em desenvolvimento de soluções digitais para o setor automotivo no Brasil até 2030, expandindo o alcance do sistema "MechKar" para oficinas mecânicas em todo o território nacional.</p>
+          </article>
+          <article class="mvv-bloco revelar" id="valores" aria-labelledby="t-valores">
+            <h3 id="t-valores"><span class="mvv-num" aria-hidden="true">03</span> Valores</h3>
+            <p>A MechKar Systems pauta suas ações nos seguintes valores:</p>
+            <ul class="lista-valores">
+              <li>Inovação contínua</li>
+              <li>Compromisso com a qualidade</li>
+              <li>Foco no cliente</li>
+              <li>Transparência nas relações</li>
+              <li>Responsabilidade social</li>
+              <li>Alinhamento com os Objetivos de Desenvolvimento Sustentável da ONU</li>
+            </ul>
+          </article>
+        </div>
+
+        <aside class="ods revelar" aria-labelledby="t-ods">
+          <div class="ods-selo" aria-hidden="true"><b>9</b><span>INDÚSTRIA, INOVAÇÃO E INFRAESTRUTURA</span></div>
+          <div>
+            <h3 id="t-ods">Alinhados à ODS 9 da ONU</h3>
+            <p>Nosso trabalho dialoga com os Objetivos de Desenvolvimento Sustentável da ONU, especialmente a ODS 9 — Indústria, Inovação e Infraestrutura.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ EQUIPE ============ -->
+    <section class="secao secao-alt" id="equipe" aria-labelledby="titulo-equipe">
+      <div class="container">
+        <header class="cabeca-secao revelar">
+          <p class="etiqueta">Quem faz acontecer</p>
+          <h2 id="titulo-equipe">Organograma</h2>
+          <p>Conheça a equipe responsável pelo desenvolvimento do sistema MechKar.</p>
+        </header>
+
+        <div class="organograma revelar">
+          <ul class="org-raiz">
+            <li class="org-no">
+              <article class="pessoa pessoa-lider">
+                <img src="assets/img/eduardo.png" alt="Foto de Eduardo Donato" width="112" height="112" loading="lazy">
+                <h3>Eduardo Donato</h3>
+                <ul class="funcoes"><li>Líder</li><li>Desenvolvedor Front-end</li><li>Documentador</li></ul>
+              </article>
+
+              <ul class="org-filhos">
+                <li class="org-no">
+                  <article class="pessoa">
+                    <img src="assets/img/anderson.png" alt="Foto de Anderson Beloti" width="96" height="96" loading="lazy">
+                    <h3>Anderson Beloti</h3>
+                    <ul class="funcoes"><li>Desenvolvedor Back-end</li><li>Analista</li></ul>
+                  </article>
+                </li>
+                <li class="org-no">
+                  <article class="pessoa">
+                    <img src="assets/img/daniel.png" alt="Foto de Daniel Faleia" width="96" height="96" loading="lazy">
+                    <h3>Daniel Faleia</h3>
+                    <ul class="funcoes"><li>Desenvolvedor Back-end</li><li>Analista de Dados</li></ul>
+                  </article>
+                </li>
+                <li class="org-no">
+                  <article class="pessoa">
+                    <img src="assets/img/guilherme.png" alt="Foto de Guilherme Reis" width="96" height="96" loading="lazy">
+                    <h3>Guilherme Reis</h3>
+                    <ul class="funcoes"><li>Desenvolvedor Front-end</li></ul>
+                  </article>
+                </li>
+                <li class="org-no">
+                  <article class="pessoa">
+                    <img src="assets/img/nicolas.png" alt="Foto de Nicolas Sousa" width="96" height="96" loading="lazy">
+                    <h3>Nicolas Sousa</h3>
+                    <ul class="funcoes"><li>Desenvolvedor Back-end</li><li>Analista de Dados</li></ul>
+                  </article>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section class="secao" id="contato" aria-labelledby="titulo-contato">
+      <div class="container duas-colunas contato-grade">
+        <div class="revelar">
+          <p class="etiqueta">Vamos conversar</p>
+          <h2 id="titulo-contato">Fale com a MechKar</h2>
+          <p>Tem uma oficina, quer conhecer o sistema ou ficou com alguma dúvida? Deixe sua mensagem para a equipe da MechKar.</p>
+          <ul class="contato-infos">
+            <li>
+              <span class="cartao-icone pequeno" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.4" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+              <span>Nossa meta é levar o sistema MechKar a oficinas mecânicas de todo o Brasil.</span>
+            </li>
+            <li>
+              <span class="cartao-icone pequeno" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+              <span>Conte para a gente o que você precisa.</span>
+            </li>
+          </ul>
+        </div>
+
+        <form class="form revelar" id="form-contato" novalidate aria-labelledby="titulo-form">
+          <h3 id="titulo-form">Envie uma mensagem</h3>
+          <div class="campo">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" required aria-describedby="erro-nome">
+            <p class="erro" id="erro-nome" role="alert"></p>
+          </div>
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="erro-email">
+            <p class="erro" id="erro-email" role="alert"></p>
+          </div>
+          <div class="campo">
+            <label for="assunto">Assunto</label>
+            <select id="assunto" name="assunto" required aria-describedby="erro-assunto">
+              <option value="">Escolha uma opção</option>
+              <option>Quero conhecer o sistema MechKar</option>
+              <option>Tenho uma oficina mecânica</option>
+              <option>Dúvida sobre dados técnicos</option>
+              <option>Parcerias</option>
+              <option>Outro assunto</option>
+            </select>
+            <p class="erro" id="erro-assunto" role="alert"></p>
+          </div>
+          <div class="campo">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="5" required aria-describedby="erro-mensagem"></textarea>
+            <p class="erro" id="erro-mensagem" role="alert"></p>
+          </div>
+          <button class="btn btn-primario" type="submit">Enviar mensagem</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="rodape">
+    <div class="container rodape-linha">
+      <div class="marca marca-rodape">
+        <img class="marca-simbolo" src="assets/img/simbolo.png" alt="" width="32" height="35">
+        <span class="marca-nome">Mechkar</span>
+      </div>
+      <p>MechKar — Inovação e tecnologia para a mecânica automotiva.</p>
+      <p class="rodape-nota">© <span id="ano">2026</span> MechKar Systems. Todos os direitos reservados.</p>
+      <a class="rodape-topo" href="#inicio">Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <!-- ============ PAINEL DE ACESSIBILIDADE ============ -->
+  <div class="painel" id="painel-acess" role="dialog" aria-modal="false" aria-labelledby="acess-titulo" hidden>
+    <div class="painel-topo">
+      <h2 id="acess-titulo">Acessibilidade</h2>
+      <button class="icone-btn" id="fechar-acess" type="button" aria-label="Fechar opções de acessibilidade">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="painel-corpo">
+      <fieldset class="grupo">
+        <legend>Tamanho do texto</legend>
+        <div class="linha-btns">
+          <button class="btn-mini" type="button" id="fonte-menos" aria-label="Diminuir o texto">A−</button>
+          <output class="valor" id="fonte-valor" for="fonte-menos fonte-mais" aria-live="polite">100%</output>
+          <button class="btn-mini" type="button" id="fonte-mais" aria-label="Aumentar o texto">A+</button>
+          <button class="btn-mini texto" type="button" id="fonte-reset">Padrão</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Aparência</legend>
+        <div class="radios" role="radiogroup" aria-label="Tema da página">
+          <label><input type="radio" name="tema" value="auto"> Automático</label>
+          <label><input type="radio" name="tema" value="claro"> Claro</label>
+          <label><input type="radio" name="tema" value="escuro"> Escuro</label>
+        </div>
+        <div class="opcao"><span id="l-contraste">Alto contraste</span><button class="chave" type="button" role="switch" aria-checked="false" aria-labelledby="l-contraste" data-opcao="contraste"></button></div>
+        <div class="opcao"><span id="l-links">Destacar links</span><button class="chave" type="button" role="switch" aria-checked="false" aria-labelledby="l-links" data-opcao="links"></button></div>
+        <div class="opcao"><span id="l-dislexia">Fonte de fácil leitura</span><button class="chave" type="button" role="switch" aria-checked="false" aria-labelledby="l-dislexia" data-opcao="dislexia"></button></div>
+        <div class="opcao"><span id="l-espaco">Mais espaço entre letras e linhas</span><button class="chave" type="button" role="switch" aria-checked="false" aria-labelledby="l-espaco" data-opcao="espaco"></button></div>
+        <div class="opcao"><span id="l-movimento">Reduzir movimento</span><button class="chave" type="button" role="switch" aria-checked="false" aria-labelledby="l-movimento" data-opcao="movimento"></button></div>
+        <div class="opcao"><span id="l-cursor">Cursor grande</span><button class="chave" type="button" role="switch" aria-checked="false" aria-labelledby="l-cursor" data-opcao="cursor"></button></div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Leitura em voz alta</legend>
+        <div class="linha-btns quebra">
+          <button class="btn-mini texto" type="button" id="ler-pagina">Ler a página</button>
+          <button class="btn-mini texto" type="button" id="ler-selecao">Ler seleção</button>
+          <button class="btn-mini texto" type="button" id="ler-parar">Parar</button>
+        </div>
+        <label class="velocidade" for="voz-velocidade">Velocidade: <output id="voz-velocidade-valor">1,0x</output></label>
+        <input type="range" id="voz-velocidade" min="0.7" max="1.5" step="0.1" value="1">
+        <p class="dica" id="dica-leitura">A leitura usa a voz do seu aparelho.</p>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Comandos de voz</legend>
+        <button class="btn-mini texto largo" type="button" id="voz-comando" aria-pressed="false">Ativar comandos de voz</button>
+        <p class="dica" id="dica-voz">Diga, por exemplo: "ir para equipe", "modo escuro", "aumentar fonte" ou "ler página".</p>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Libras</legend>
+        <p class="dica">O botão azul do VLibras, na lateral da tela, traduz o conteúdo para a Língua Brasileira de Sinais.</p>
+      </fieldset>
+
+      <button class="btn btn-secundario largo" type="button" id="restaurar">Restaurar padrões</button>
+    </div>
+  </div>
+
+  <!-- avisos para leitores de tela -->
+  <div class="somente-leitor" id="avisos" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- VLibras: widget oficial do Governo Federal (tradutor para Libras) -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/acessibilidade.js" defer></script>
+</body>
+</html>
