@@ -134,25 +134,65 @@
       return !msg;
     };
     const campos = Array.from(form.elements).filter((el) => regras[el.name]);
+
     campos.forEach((c) => {
       c.addEventListener('blur', () => validar(c));
       c.addEventListener('input', () => { if (c.getAttribute('aria-invalid') === 'true') validar(c); });
     });
-    form.addEventListener('submit', (e) => {
+     emailjs.init({
+      publicKey: 'aMeXllKfMG8E-_YNP'
+    });
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
       status.textContent = '';
+
       const invalidos = campos.filter((c) => !validar(c));
+
       if (invalidos.length) {
         invalidos[0].focus();
-        anunciar(`Há ${invalidos.length} ${invalidos.length === 1 ? 'campo' : 'campos'} para corrigir.`);
+        anunciar(`Há ${invalidos.length} campos para corrigir.`);
         return;
       }
-      /* Aqui entra o envio de verdade (e-mail, API ou serviço de formulários).
-         Por enquanto a página só confirma na tela, sem enviar os dados para lugar nenhum. */
-      status.textContent = 'Mensagem pronta! (Demonstração: o envio ainda não está ligado a um servidor.)';
-      anunciar(status.textContent);
-      form.reset();
-      campos.forEach((c) => c.setAttribute('aria-invalid', 'false'));
+
+      const botao = form.querySelector('button[type="submit"]');
+
+      botao.disabled = true;
+      botao.textContent = 'Enviando...';
+      status.textContent = 'Enviando sua mensagem...';
+
+      const parametros = {
+        nome: form.elements.namedItem('nome').value.trim(),
+        email: form.elements.namedItem('email').value.trim(),
+        assunto: form.elements.namedItem('assunto').value,
+        mensagem: form.elements.namedItem('mensagem').value.trim()
+      };
+
+      try {
+        await emailjs.send(
+          'service_9qfcsto',
+          'template_7c37szr',
+          parametros
+        );
+
+        status.textContent = 'Mensagem enviada com sucesso! Obrigado pelo contato.';
+        anunciar(status.textContent);
+
+        form.reset();
+
+        campos.forEach((c) => c.setAttribute('aria-invalid', 'false'));
+
+      } catch (erro) {
+        console.error('[MechKar] Erro ao enviar e-mail:', erro);
+
+        status.textContent = 'Não foi possível enviar sua mensagem. Tente novamente.';
+        anunciar(status.textContent);
+
+      } finally {
+        botao.disabled = false;
+        botao.textContent = 'Enviar mensagem';
+      }
     });
   }
 
