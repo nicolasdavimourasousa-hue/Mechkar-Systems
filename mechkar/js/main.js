@@ -172,7 +172,7 @@
       try {
         await emailjs.send(
           'service_9qfcsto',
-          'template_7c37szr',
+          'template_0jz7pb2',
           parametros
         );
 
